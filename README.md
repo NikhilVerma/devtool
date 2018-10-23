@@ -8,7 +8,7 @@ Runs Node.js programs inside Chrome DevTools (using [Electron](https://github.co
 
 ```sh
 # runs a Node.js app in DevTools
-devtool src/app.js
+devtool-next src/app.js
 ```
 
 This allows you to profile, debug and develop typical Node.js programs with some of the features of Chrome DevTools. See my blog post [Debugging Node.js With Chrome DevTools](http://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools) for more details.
@@ -62,22 +62,22 @@ Examples:
 
 ```sh
 # watch/dev a JS file, with a custom index.html
-devtool src/index.js --index index.html --watch
+devtool-next src/index.js --index index.html --watch
 
 # redirect console and pipe results to a file
-devtool main.js -q -c > foo.txt
+devtool-next main.js -q -c > foo.txt
 
 # open a REPL window
-devtool
+devtool-next
 
 # pipe content into process.stdin
-devtool writer.js < README.md
+devtool-next writer.js < README.md
 
 # pass clean arg list to app.js
-devtool app.js --watch -- entry
+devtool-next app.js --watch -- entry
 
 # register with babel before requiring our app
-devtool -r babel-register app.js
+devtool-next -r babel-register app.js
 ```
 
 You can specify `--watch` multiple times to watch different files/globs. If a custom `--index` is passed, it will also be watched for changes.
