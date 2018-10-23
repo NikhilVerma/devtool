@@ -1,14 +1,8 @@
 # devtool
 
+## This is a fork of [Jam3/devtool](https://github.com/Jam3/devtool) and has updated versions of electron to allow running ES6. It's published as devtool-next in npm
+
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
-
-:warning: 
-
-**Update:** This tool is mostly obsolete as much of the philosophy has been brought into Node/DevTool core, see [here](https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27) for details.
-
-If you wish to take over maintenance of this project, please ping me on twitter: [@mattdesl](https://twitter.com/mattdesl).
-
----
 
 Runs Node.js programs inside Chrome DevTools (using [Electron](https://github.com/atom/electron/)).
 
@@ -30,7 +24,7 @@ The recording below shows setting breakpoints within an HTTP server.
 Install globally with `npm`.
 
 ```sh
-npm install devtool -g
+npm install devtool-next -g
 ```
 
 ## Usage
@@ -39,7 +33,7 @@ Run the command to open a new DevTools window.
 
 ```txt
 Usage:
-  devtool [entry] [opts]
+  devtool-next [entry] [opts]
 
 Options:
   --watch, -w             enable file watching (for development)
@@ -60,7 +54,7 @@ Options:
                 --no-sm   disable source map generation
   --no-node-timers,
                 --no-nt   use browser timers
-  --no-browser-globals,   
+  --no-browser-globals,
                 --no-bg   removes window,document,navigator from required files
 ```
 
@@ -86,7 +80,7 @@ devtool app.js --watch -- entry
 devtool -r babel-register app.js
 ```
 
-You can specify `--watch` multiple times to watch different files/globs. If a custom `--index` is passed, it will also be watched for changes. 
+You can specify `--watch` multiple times to watch different files/globs. If a custom `--index` is passed, it will also be watched for changes.
 
 If `--` is given, anything after it will be used as the arguments for the app's `process.argv`. This way you can avoid polluting your program arguments with those specific to `devtool`.
 
@@ -118,7 +112,7 @@ console.profile('build');
 // Bundle some browser application
 browserify('client.js').bundle(function (err, src) {
   if (err) throw err;
-  
+
   // Finish DevTools profiling...
   console.profileEnd('build');
 });
@@ -127,7 +121,7 @@ browserify('client.js').bundle(function (err, src) {
 Now we can run `devtool` on our file:
 
 ```sh
-devtool build.js
+devtool-next build.js
 ```
 
 Some screenshots of the profiling and debugging experience:
@@ -142,7 +136,7 @@ You can also set an initial breakpoint with the `--break` flag. This will insert
 
 ```sh
 # run app but break on start
-devtool src/index.js --break
+devtool-next src/index.js --break
 ```
 
 ### REPL
@@ -150,7 +144,7 @@ devtool src/index.js --break
 We can also use the DevTools Console as a basic Node REPL with some nice additional features. The require statements will be relative to your current working directory. You can run the command without any entry file, like this:
 
 ```sh
-devtool
+devtool-next
 ```
 
 ![console](http://i.imgur.com/bnInBHA.png)
@@ -158,7 +152,7 @@ devtool
 When you don't specify an entry file, you can pipe JavaScript in to execute it in the browser. For example:
 
 ```sh
-browserify client.js | devtool -c
+browserify client.js | devtool-next -c
 ```
 
 ### Browser APIs
@@ -170,7 +164,7 @@ For this, you may want to use the `--bf` or `--browser-field` flag so that modul
 Example:
 
 ```sh
-devtool street.js --index street.html --quit --bf > street.png
+devtool-next street.js --index street.html --quit --bf > street.png
 ```
 
 Result:
@@ -193,13 +187,13 @@ To debug Grunt/Gulp/Mocha and other commands, you will need to pass the JavaScri
 
 ```sh
 # same as "gulp watch"
-devtool node_modules/gulp/bin/gulp.js -c -- watch
+devtool-next node_modules/gulp/bin/gulp.js -c -- watch
 
 # same as "grunt"
-devtool node_modules/grunt-cli/bin/grunt -c --
+devtool-next node_modules/grunt-cli/bin/grunt -c --
 
 # run a mocha test
-devtool node_modules/mocha/bin/_mocha -qc -- ./tests/my-spec.js 
+devtool-next node_modules/mocha/bin/_mocha -qc -- ./tests/my-spec.js
 ```
 
 ### Other Examples
@@ -232,7 +226,7 @@ It also includes some additional features on top of Electron:
 
 ## Gotchas
 
-Since this is running in Electron and Chromium, instead of Node, you might run into some oddities and gotchas. 
+Since this is running in Electron and Chromium, instead of Node, you might run into some oddities and gotchas.
 
 - `window` and other browser APIs are present; this may affect modules using these globals to detect Browser/Node environments
   - The `--no-browser-globals` may help mitigate these issues
@@ -266,7 +260,7 @@ Another Electron-based debugger is [iron-node](https://github.com/s-a/iron-node)
 
 Whereas `devtool` is more focused on the command-line, Unix-style piping/redirection, and Electron/Browser APIs for interesting use-cases (e.g. [Google StreetView](#browser-apis)).
 
-`devtool` shims various features to behave more like Node.js (like `require.main` and `process.exit`) and overrides the internal `require` mechanism for source maps, improved error handling and `"browser"` field resolution. 
+`devtool` shims various features to behave more like Node.js (like `require.main` and `process.exit`) and overrides the internal `require` mechanism for source maps, improved error handling and `"browser"` field resolution.
 
 ### `node-inspector`
 

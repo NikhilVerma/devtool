@@ -12,6 +12,7 @@ function spawnDevtool (args) {
   var argv = parseArgs(args);
   var helperRegex = /[\d\-\s\:\.]+\sElectron\sHelper\[[\d\:\.]+\]/;
   var serverArgs = [ serverPath ].concat(args);
+  process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
   var proc = spawn(electron, serverArgs, {
     stdio: [ process.stdin, 'pipe', 'pipe' ]
   });

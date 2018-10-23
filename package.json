@@ -1,13 +1,13 @@
 {
-  "name": "devtool",
-  "version": "2.3.1",
+  "name": "devtool-next",
+  "version": "0.0.1",
   "description": "runs Node.js programs through Chromium DevTools",
   "main": "index.js",
   "license": "MIT",
   "author": {
-    "name": "Matt DesLauriers",
-    "email": "dave.des@gmail.com",
-    "url": "https://github.com/mattdesl"
+    "name": "Nikhil Verma",
+    "email": "nikhilgotmail@gmail.com",
+    "url": "http://nikhil-verma.com"
   },
   "dependencies": {
     "browser-resolve": "^1.11.0",
