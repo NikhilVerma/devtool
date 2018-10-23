@@ -8,7 +8,7 @@ Runs Node.js programs inside Chrome DevTools (using [Electron](https://github.co
 
 ```sh
 # runs a Node.js app in DevTools
-devtool-next src/app.js
+devtool src/app.js
 ```
 
 This allows you to profile, debug and develop typical Node.js programs with some of the features of Chrome DevTools. See my blog post [Debugging Node.js With Chrome DevTools](http://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools) for more details.
@@ -24,7 +24,7 @@ The recording below shows setting breakpoints within an HTTP server.
 Install globally with `npm`.
 
 ```sh
-npm install devtool-next -g
+npm install devtool -g
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ Run the command to open a new DevTools window.
 
 ```txt
 Usage:
-  devtool-next [entry] [opts]
+  devtool [entry] [opts]
 
 Options:
   --watch, -w             enable file watching (for development)
@@ -62,22 +62,22 @@ Examples:
 
 ```sh
 # watch/dev a JS file, with a custom index.html
-devtool-next src/index.js --index index.html --watch
+devtool src/index.js --index index.html --watch
 
 # redirect console and pipe results to a file
-devtool-next main.js -q -c > foo.txt
+devtool main.js -q -c > foo.txt
 
 # open a REPL window
 devtool-next
 
 # pipe content into process.stdin
-devtool-next writer.js < README.md
+devtool writer.js < README.md
 
 # pass clean arg list to app.js
-devtool-next app.js --watch -- entry
+devtool app.js --watch -- entry
 
 # register with babel before requiring our app
-devtool-next -r babel-register app.js
+devtool -r babel-register app.js
 ```
 
 You can specify `--watch` multiple times to watch different files/globs. If a custom `--index` is passed, it will also be watched for changes.
@@ -121,7 +121,7 @@ browserify('client.js').bundle(function (err, src) {
 Now we can run `devtool` on our file:
 
 ```sh
-devtool-next build.js
+devtool build.js
 ```
 
 Some screenshots of the profiling and debugging experience:
@@ -136,7 +136,7 @@ You can also set an initial breakpoint with the `--break` flag. This will insert
 
 ```sh
 # run app but break on start
-devtool-next src/index.js --break
+devtool src/index.js --break
 ```
 
 ### REPL
@@ -152,7 +152,7 @@ devtool-next
 When you don't specify an entry file, you can pipe JavaScript in to execute it in the browser. For example:
 
 ```sh
-browserify client.js | devtool-next -c
+browserify client.js | devtool -c
 ```
 
 ### Browser APIs
@@ -164,7 +164,7 @@ For this, you may want to use the `--bf` or `--browser-field` flag so that modul
 Example:
 
 ```sh
-devtool-next street.js --index street.html --quit --bf > street.png
+devtool street.js --index street.html --quit --bf > street.png
 ```
 
 Result:
@@ -187,13 +187,13 @@ To debug Grunt/Gulp/Mocha and other commands, you will need to pass the JavaScri
 
 ```sh
 # same as "gulp watch"
-devtool-next node_modules/gulp/bin/gulp.js -c -- watch
+devtool node_modules/gulp/bin/gulp.js -c -- watch
 
 # same as "grunt"
-devtool-next node_modules/grunt-cli/bin/grunt -c --
+devtool node_modules/grunt-cli/bin/grunt -c --
 
 # run a mocha test
-devtool-next node_modules/mocha/bin/_mocha -qc -- ./tests/my-spec.js
+devtool node_modules/mocha/bin/_mocha -qc -- ./tests/my-spec.js
 ```
 
 ### Other Examples
