@@ -11,7 +11,6 @@
   "detachDevTools": false,
   "v8": {
     "flags": [
-      "--harmony-arrow-functions"
     ]
   }
 }
