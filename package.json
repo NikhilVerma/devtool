@@ -1,6 +1,6 @@
 {
   "name": "devtool-next",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "runs Node.js programs through Chromium DevTools",
   "main": "index.js",
   "license": "MIT",
