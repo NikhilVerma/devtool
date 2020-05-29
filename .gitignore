@@ -6,3 +6,4 @@ bundle.js
 example/streetview.png
 example/markdown.png
 !test/fixtures/node_modules
+.vscode
